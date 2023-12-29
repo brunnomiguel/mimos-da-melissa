@@ -1,0 +1,21 @@
+/* Estilizando o scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #f8e6f3;
+  border-radius: 6px;
+  border: 1px solid #f10c5f;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f10c5f;
+  border-radius: 6px;
+}
+
+.scroll-y {
+  scrollbar-width: thin;
+  scrollbar-color: #4f4f4f #1f1f1f;
+}
