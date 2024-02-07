@@ -1,9 +1,10 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  output: "export",
-  images: {
-    unoptimized: true,
+module.exports = {
+  async rewrites() {
+    return [
+      {
+        source: "/",
+        destination: "http://localhost:3333/:slug*",
+      },
+    ];
   },
 };
-
-module.exports = nextConfig;

@@ -74,6 +74,7 @@ export default function Carousel({ images }: CarouselProps) {
             key={index}
             src={image.image}
             alt={image.name}
+            priority={true}
           />
         ))}
       </div>

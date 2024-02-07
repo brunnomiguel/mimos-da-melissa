@@ -10,3 +10,19 @@ header {
     rgba(235, 119, 121, 0) 100%
   );
 }
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #f10c5f;
+  border-radius: 4px;
+  border: 1px solid #f10c5f;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f8e6f3;
+  border: 1px solid #f10c5f;
+}

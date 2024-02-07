@@ -1,11 +1,16 @@
-import Layout from "@/components/Layout";
 import "./globals.css";
+
+import Layout from "@/components/Layout";
+
+import { Poppins } from "next/font/google";
+import { Providers } from "@/contexts";
 
 import type { Metadata } from "next";
 
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({
+  subsets: ["devanagari"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+});
 
 export const metadata: Metadata = {
   title: "Mimos da Melissa",
@@ -21,9 +26,11 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body
         suppressHydrationWarning={true}
-        className={`${inter.className} w-full min-h-screen bg-bg_main_color text-text_color`}
+        className={`${poppins.className} w-full min-h-screen bg-bg_main_color text-text_color`}
       >
-        <Layout>{children}</Layout>
+        <Providers>
+          <Layout>{children}</Layout>
+        </Providers>
       </body>
     </html>
   );

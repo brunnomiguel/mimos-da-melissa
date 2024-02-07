@@ -21,7 +21,6 @@ export default function ProductCard({ release }: ProductCardProps) {
       <Image
         src={ImageExemple}
         alt="Imagem de exemplo"
-        width={288}
         height={200}
         className="w-full"
       />
