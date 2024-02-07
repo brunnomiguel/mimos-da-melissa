@@ -19,7 +19,7 @@ const images: Image[] = [
 
 export default function TopBanners() {
   return (
-    <section className="mt-24">
+    <section>
       {images.length > 0 ? (
         <Carousel images={images} />
       ) : (

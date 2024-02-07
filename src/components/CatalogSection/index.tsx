@@ -1,8 +1,13 @@
-import ProductCard from "../ProductCard";
+"use client";
 
+import { useRouter } from "next/navigation";
 import { CgArrowTopRight } from "react-icons/cg";
 
+import ProductCard from "../ProductCard";
+
 export default function CatalogSection() {
+  const router = useRouter();
+
   return (
     <section className="w-full">
       <h2 className="mt-6 mb-6 text-center text-4xl font-semibold">Catálogo</h2>
@@ -18,7 +23,10 @@ export default function CatalogSection() {
         <ProductCard />
         <ProductCard />
       </ul>
-      <button className="w-64 h-14 mt-4 ml-auto mr-auto bg-price-color text-white flex items-center justify-center rounded-lg text-xl font-semibold hover:opacity-70">
+      <button
+        onClick={() => router.push("/shop/products")}
+        className="w-64 h-14 mt-4 ml-auto mr-auto bg-price-color text-white flex items-center justify-center rounded-lg text-xl font-semibold hover:opacity-70"
+      >
         Ver mais <CgArrowTopRight size="2rem" color="#fff" />
       </button>
     </section>
