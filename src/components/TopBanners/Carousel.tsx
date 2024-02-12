@@ -2,7 +2,7 @@
 
 import Image, { StaticImageData } from "next/image";
 import { useEffect, useState } from "react";
-import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 interface Image {
   image: StaticImageData;
@@ -54,18 +54,15 @@ export default function Carousel({ images }: CarouselProps) {
   }
 
   return (
-    <div className="w-full max-w-screen-2xl m-auto overflow-hidden relative">
+    <div className="w-full m-auto overflow-hidden relative bg-banner">
       <div
-        className="cursor-pointer absolute left-0 top-1/2 transform -translate-y-1/2"
+        className="cursor-pointer absolute left-0 top-1/2 transform -translate-y-1/2 pl-10 opacity-60 hover:opacity-100"
         onClick={prevSlide}
       >
-        <FaArrowAltCircleLeft
-          fill="#F10C5F"
-          size={smallView ? "1.5rem" : "2.5rem"}
-        />
+        <FaArrowLeft color="#F10C5F" size={smallView ? "1.5rem" : "2.5rem"} />
       </div>
 
-      <div className="flex">
+      <div className="flex w-full max-w-screen-2xl ml-auto mr-auto">
         {images.map((image, index) => (
           <Image
             className={`${
@@ -80,13 +77,10 @@ export default function Carousel({ images }: CarouselProps) {
       </div>
 
       <div
-        className="cursor-pointer absolute right-0 top-1/2 transform -translate-y-1/2"
+        className="cursor-pointer absolute right-0 top-1/2 transform -translate-y-1/2 pr-10 opacity-60 hover:opacity-100"
         onClick={nextSlide}
       >
-        <FaArrowAltCircleRight
-          fill="#F10C5F"
-          size={smallView ? "1.5rem" : "2.5rem"}
-        />
+        <FaArrowRight color="#F10C5F" size={smallView ? "1.5rem" : "2.5rem"} />
       </div>
     </div>
   );

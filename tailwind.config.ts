@@ -14,18 +14,14 @@ const config: Config = {
       height: {
         "h-500": "500px",
         "screen-90": "90vh",
+        "screen-85": "85vh",
       },
       boxShadow: {
         "3xl": "0px 6px 9px 1px rgba(191, 38, 38, 0.25)",
       },
-      borderColor: {
-        focus: "#1a13e681",
-        error: "#dc1637",
-        default: "#451E12",
-        filled: "#3FE864",
-      },
       textColor: {
         "filled-color": "#3FE864",
+        "focus-color": "#0d08a3",
         "error-color": "#dc1637",
         "default-color": "#451E12",
       },
@@ -33,14 +29,20 @@ const config: Config = {
         text_color: "#451E12",
         "price-color": "#F10C5F",
         bg_main_color: "#F8E6F3",
-        bg_form_color: "#F1EEEE",
+        bg_form_color: "#F2F2F2",
         "bb-color": "rgba(241, 12, 95, 0.25)",
+      },
+      backgroundColor: {
+        banner: "#FBEBEC",
       },
       backgroundImage: {
         "banner-forms": "url('/images/banners/sign-in.png')",
       },
       dropShadow: {
-        "input-style": "0px 4px 2px rgba(0, 0, 0, 0.40)",
+        "input-default": "0px 4px 2px rgba(69, 30, 18, 0.40)",
+        "input-filled": "0px 4px 2px rgb(11, 165, 44, 0.40)",
+        "input-error": "0px 4px 2px rgb(241, 12, 95, 0.40)",
+        "input-focus": "0px 4px 2px rgba(13, 8, 163, 0.40)",
       },
     },
   },

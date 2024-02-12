@@ -1,81 +1,100 @@
 "use client";
 
+import {
+  Input,
+  Navbar,
+  Button,
+  NavbarItem,
+  NavbarContent,
+  NavbarMenuToggle,
+} from "@nextui-org/react";
+
 import Link from "next/link";
-import Logo from "../../../public/images/logos/logo.jpg";
 import Image from "next/image";
-import logoName from "../../../public/images/logos/logo-name.png";
-import DrawerMenu from "../DrawerMenu";
+import { useRouter } from "next/navigation";
 
-import { Input } from "../Input";
-import { useHeader } from "./useHeader";
+import { useState } from "react";
+import { menuIcons } from "../../utils/icons";
+import { NavbarMenu } from "./NavbarMenu";
 
-import { IoMenu } from "react-icons/io5";
-import { FaCartPlus, FaSearch, FaTimes } from "react-icons/fa";
+import logoHeader from "../../../public/images/logos/logo-header.png";
 
-export default function Header() {
-  const { smallView, drawerOpen, toggleDrawer } = useHeader();
+export function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const routes = useRouter();
 
   return (
-    <header className="w-full h-24 pl-4 pr-4 flex items-center justify-between absolute top-0 left-0">
-      {smallView ? (
-        <div className="w-full flex items-center justify-between">
-          <Link href="/">
-            <div className="flex items-center">
-              <Image
-                className="rounded-full"
-                src={Logo}
-                width={75}
-                height={75}
-                alt="Logo Mimos da Melissa"
-              />
-              <Image src={logoName} alt="Mimos da Melissa" width={150} />
-            </div>
-          </Link>
-          <div>
-            {drawerOpen ? (
-              <FaTimes size="2rem" color="#fff" onClick={toggleDrawer} />
-            ) : (
-              <IoMenu size="2rem" color="#fff" onClick={toggleDrawer} />
-            )}
-          </div>
+    <Navbar
+      className="w-full h-24"
+      maxWidth="full"
+      shouldHideOnScroll
+      isMenuOpen={isMenuOpen}
+      onMenuOpenChange={setIsMenuOpen}
+    >
+      <NavbarContent className="rounded-xl border-2 border-solid border-bg_form_color pl-2 pr-2 h-14 cursor-pointer">
+        <Button
+          className="bg-transparent w-full h-full"
+          as={NavbarMenuToggle}
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+        />
+      </NavbarContent>
 
-          {drawerOpen ? <DrawerMenu /> : null}
-        </div>
-      ) : (
-        <div className="w-full ml-auto mr-auto max-w-screen-2xl flex items-center justify-between">
-          <Link href="/">
-            <div className="flex items-center">
-              <Image
-                className="rounded-full"
-                src={Logo}
-                width={75}
-                height={75}
-                alt="Logo Mimos da Melissa"
-              />
-              <Image src={logoName} alt="Mimos da Melissa" width={180} />
-            </div>
-          </Link>
-          <nav className="flex gap-6 items-center">
-            <li className="list-none text-xl font-semibold hover:font-extrabold">
-              <Link href="/shop/products">Nossos Produtos</Link>
-            </li>
-            <li className="list-none text-xl font-semibold hover:font-extrabold">
-              <Link href="/">Sobre nós</Link>
-            </li>
-          </nav>
-          <div className="flex items-center gap-3">
-            <Input
-              type="text"
-              icon={FaSearch}
-              placeholder="Encontrar algum produto"
-            />
+      <NavbarContent className="w-full" justify="center">
+        <Image
+          className="rounded-2xl w-52 h-14 cursor-pointer"
+          src={logoHeader}
+          alt="Logo Mimos da Melissa"
+          onClick={() => routes.push("/")}
+        />
 
-            <div className="flex cursor-pointer">
-              <FaCartPlus size="2rem" color="#451E12" />
-            </div>
-          </div>
-        </div>
-      )}
-    </header>
+        <Input
+          className="drop-shadow-input-default text-default-color placeholder:text-default-color w-full"
+          size="sm"
+          type="search"
+          placeholder="Pesquise algo..."
+          startContent={menuIcons.search}
+        />
+
+        <NavbarContent className="gap-0">
+          <Button
+            className="font-semibold text-default-color bg-transparent rounded-tr-none rounded-br-none border-2 border-solid border-price-color hover:bg-price-color hover:text-white"
+            as={Link}
+            href="/signin"
+          >
+            Entrar
+          </Button>
+          <Button
+            className="bg-price-color text-white font-semibold rounded-tl-none rounded-bl-none"
+            as={Link}
+            href="/signup"
+          >
+            Criar Conta
+          </Button>
+        </NavbarContent>
+
+        <NavbarItem>
+          <Button
+            className="w-12 text-center font-semibold text-text_color text-lg hover:opacity-80 bg-transparent whitespace-normal leading-4"
+            as={Link}
+            href="#"
+          >
+            Meus Pedidos
+          </Button>
+        </NavbarItem>
+
+        <NavbarItem>
+          <Button
+            className="bg-transparent text-base font-semibold text-text_color"
+            startContent={menuIcons.cart}
+          >
+            Carrinho{" "}
+            <span className="font-bold text-2xl text-price-color">5</span>
+          </Button>
+        </NavbarItem>
+      </NavbarContent>
+
+      <NavbarMenu />
+    </Navbar>
   );
 }

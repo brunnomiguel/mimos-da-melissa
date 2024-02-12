@@ -1,5 +1,6 @@
+import { Header } from "../Header";
 import { ReactNode } from "react";
-import Header from "../Header";
+
 import Footer from "../Footer";
 
 interface LayoutProps {
@@ -11,11 +12,9 @@ export default function Layout({ children }: LayoutProps) {
     <div className="flex flex-col min-h-screen">
       <Header />
 
-      <hr className="w-full h-4 mt-20 border-b-2 border-b-bb-color" />
-
       <main className="flex-1">{children}</main>
 
-      <hr className="w-full h-4 border-b-2 border-b-bb-color" />
+      <hr className="w-full h-1 bg-bb-color" />
 
       <Footer />
     </div>

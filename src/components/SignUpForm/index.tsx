@@ -1,40 +1,59 @@
 "use client";
 
 import { Input } from "../Input";
-import { IoMdMail } from "react-icons/io";
-import { FaLock, FaUser } from "react-icons/fa";
 import { useRouter } from "next/navigation";
+import { menuIcons } from "@/utils/icons";
+import { Button } from "@nextui-org/react";
 
-export default function SignUpForm({ smallView }: { smallView: boolean }) {
+export default function SignUpForm() {
   const router = useRouter();
 
   return (
-    <form
-      className={`${
-        !smallView ? "w-3/5" : "w-full"
-      } flex flex-col items-center justify-center bg-bg_form_color h-full`}
-    >
-      <h2 className="text-4xl font-semibold mb-7">Cadastro</h2>
-      <div className="pl-5 pr-5 flex flex-col w-full md:w-3/4 lg:w-2/4 xl:w-3/5">
-        <Input type="text" icon={FaUser} placeholder="Nome" />
-        <Input type="text" icon={IoMdMail} placeholder="E-mail" />
-        <Input type="text" icon={FaLock} placeholder="Senha" />
-        <Input type="text" icon={FaLock} placeholder="Confirmação de Senha" />
+    <form className="w-4/6 flex flex-col items-center justify-center bg-bg_form_color h-full">
+      <h2 className="text-4xl font-semibold mt-10 mb-7">Cadastro</h2>
+
+      <div className="flex items-center justify-center gap-3 mb-6">
+        <Button
+          className="h-8 rounded-full bg-price-color flex items-center justify-center"
+          startContent={menuIcons.facebook}
+        />
+        <Button
+          className="h-8 rounded-full bg-price-color flex items-center justify-center"
+          startContent={menuIcons.google}
+        />
+        <Button
+          className="h-8 rounded-full bg-price-color flex items-center justify-center"
+          startContent={menuIcons.linkedin}
+        />
       </div>
 
-      <button className="w-48 h-14 mt-6 font-semibold bg-price-color rounded-lg cursor-pointer text-bg_form_color hover:opacity-70">
-        Cadastrar
-      </button>
+      <div className="w-2/5 pl-5 pr-5 gap-4 flex flex-col">
+        <Input type="text" icon={menuIcons.user} placeholder="Nome" />
+        <Input type="text" icon={menuIcons.email} placeholder="E-mail" />
+        <Input type="password" icon={menuIcons.lock} placeholder="Senha" />
+        <Input
+          type="password"
+          icon={menuIcons.lock}
+          placeholder="Confirmação de Senha"
+        />
+      </div>
+
+      <Button
+        type="submit"
+        className="w-48 h-14 mt-6 mb-6 font-semibold text-lg bg-price-color rounded-lg cursor-pointer text-bg_form_color"
+      >
+        Cadastre-se
+      </Button>
 
       <p className="mt-8 text-xl font-semibold">Já possui uma conta?</p>
 
-      <button
-        className="w-48 h-14 mt-5 font-semibold bg-gray-500 rounded-lg cursor-pointer text-bg_form_color hover:opacity-70"
+      <Button
+        className="w-48 h-14 mt-5 mb-8 font-semibold text-lg bg-gray-500 rounded-lg cursor-pointer text-bg_form_color"
         type="button"
         onClick={() => router.push("/signin")}
       >
         Faça Login
-      </button>
+      </Button>
     </form>
   );
 }

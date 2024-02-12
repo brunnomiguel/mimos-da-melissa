@@ -1,7 +1,9 @@
 "use client";
 
+import { Button } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
-import { CgArrowTopRight } from "react-icons/cg";
+
+import { menuIcons } from "@/utils/icons";
 
 import ProductCard from "../ProductCard";
 
@@ -9,8 +11,11 @@ export default function CatalogSection() {
   const router = useRouter();
 
   return (
-    <section className="w-full">
-      <h2 className="mt-6 mb-6 text-center text-4xl font-semibold">Catálogo</h2>
+    <section className="w-full pt-14 pb-14 bg-bg_form_color">
+      <h2 className="mb-8 text-center text-4xl font-semibold">
+        Produtos Recentes
+      </h2>
+
       <ul className="w-full max-w-screen-2xl ml-auto mr-auto p-4 gap-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         <ProductCard />
         <ProductCard />
@@ -23,12 +28,14 @@ export default function CatalogSection() {
         <ProductCard />
         <ProductCard />
       </ul>
-      <button
+
+      <Button
+        className="w-64 h-14 mt-4 ml-auto mr-auto bg-price-color text-white flex items-center justify-center rounded-lg text-xl font-semibold"
+        endContent={menuIcons.arrowTopRight}
         onClick={() => router.push("/shop/products")}
-        className="w-64 h-14 mt-4 ml-auto mr-auto bg-price-color text-white flex items-center justify-center rounded-lg text-xl font-semibold hover:opacity-70"
       >
-        Ver mais <CgArrowTopRight size="2rem" color="#fff" />
-      </button>
+        Ver mais
+      </Button>
     </section>
   );
 }
