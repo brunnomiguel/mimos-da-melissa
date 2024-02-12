@@ -1,7 +1,7 @@
 import Carousel from "./Carousel";
 
 import bannerOne from "../../../public/images/banners/banner-1.png";
-import bannerTwo from "../../../public/images/banners/banner-2.png";
+import bannerTwo from "../../../public/images/banners/banner-2.jpg";
 import bannerThree from "../../../public/images/banners/banner-3.png";
 
 import { StaticImageData } from "next/image";

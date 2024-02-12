@@ -1,6 +1,6 @@
 import TopBanners from "@/components/TopBanners";
 import CatalogSection from "@/components/CatalogSection";
-import ReleasesSection from "@/components/ReleasesSection";
+import SearchCategorySection from "@/components/SearchCategorySection";
 import InformationalSection from "@/components/InformationalSection";
 
 import { Fragment } from "react";
@@ -10,7 +10,7 @@ export default function Home() {
     <Fragment>
       <TopBanners />
 
-      <ReleasesSection />
+      <SearchCategorySection />
 
       <CatalogSection />
 

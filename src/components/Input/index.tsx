@@ -1,6 +1,6 @@
 "use client";
 
-import { useInput } from "./useInput";
+import { useInput } from "../../hooks/useInput";
 import { InputProps } from "@/@types/input";
 import { forwardRef, ForwardRefRenderFunction } from "react";
 
@@ -18,22 +18,41 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
 
   return (
     <div
-      className={`h-12 flex items-center rounded-md border-2 border-solid bg-gray-50 ${
+      className={`h-12 flex items-center rounded-md bg-gray-50 ${
         inputVariationColor === "focus"
-          ? "border-focus"
+          ? "drop-shadow-input-focus"
           : inputVariationColor === "error"
-          ? "border-error"
+          ? "drop-shadow-input-error"
           : inputVariationColor === "filled"
-          ? "border-filled"
-          : "border-default"
+          ? "drop-shadow-input-filled"
+          : "drop-shadow-input-default"
       }`}
     >
-      <div className={`ml-2 mr-2`}>
-        <Icon color="#000" size="1.5rem" />
+      <div className="ml-3 mr-3">
+        <Icon
+          color={
+            inputVariationColor === "focus"
+              ? "rgb(13, 8, 163)"
+              : inputVariationColor === "error"
+              ? "rgb(241,12,95)"
+              : inputVariationColor === "filled"
+              ? "rgb(11,165,44)"
+              : "rgb(69,30,18)"
+          }
+          size="1.5rem"
+        />
       </div>
 
       <input
-        className={`outline-none w-full h-full bg-transparent text-black placeholder:text-black`}
+        className={`outline-none w-full h-full bg-transparent ${
+          inputVariationColor === "focus"
+            ? "text-focus-color placeholder:text-focus-color"
+            : inputVariationColor === "error"
+            ? "text-error-color placeholder:text-error-color"
+            : inputVariationColor === "filled"
+            ? "text-filled-color placeholder:text-filled-color"
+            : "text-default-color placeholder:text-default-color"
+        }`}
         ref={ref}
         {...rest}
         onFocus={handleInputFocus}

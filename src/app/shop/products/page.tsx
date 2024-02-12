@@ -1,7 +1,7 @@
 "use client";
 
 import ProductCard from "@/components/ProductCard";
-import SkeletonCardProduct from "@/components/SkeletonCardProduct";
+import SkeletonCardProduct from "@/components/Skeletons/SkeletonCardProduct";
 
 import { useLoading } from "@/hooks/useLoading";
 

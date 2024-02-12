@@ -3,12 +3,10 @@
 import { useEffect, useState } from "react";
 
 export const useLoading = () => {
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
 
   // Simula o carregamento
   const carregarPagina = () => {
-    setLoading(true);
-
     setTimeout(() => {
       setLoading(false);
     }, 2000);
