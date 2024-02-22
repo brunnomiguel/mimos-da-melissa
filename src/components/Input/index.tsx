@@ -1,66 +1,39 @@
-"use client";
+import { InputHTMLAttributes, ReactNode, SelectHTMLAttributes } from "react";
 
-import { useInput } from "../../hooks/useInput";
-import { InputProps } from "@/@types/input";
-import { forwardRef, ForwardRefRenderFunction } from "react";
+interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement> {}
+interface SelectFieldProps extends SelectHTMLAttributes<HTMLSelectElement> {
+  children: ReactNode;
+}
 
-const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
-  { icon: Icon, label, error, ...rest },
-  ref
-) => {
-  const {
-    value,
-    setValue,
-    handleInputBlur,
-    handleInputFocus,
-    inputVariationColor,
-  } = useInput(error);
-
+function Input({ children }: { children: ReactNode }) {
   return (
-    <div
-      className={`h-12 flex items-center rounded-md bg-gray-50 ${
-        inputVariationColor === "focus"
-          ? "drop-shadow-input-focus"
-          : inputVariationColor === "error"
-          ? "drop-shadow-input-error"
-          : inputVariationColor === "filled"
-          ? "drop-shadow-input-filled"
-          : "drop-shadow-input-default"
-      }`}
-    >
-      <div className="ml-3 mr-3">
-        <Icon
-          color={
-            inputVariationColor === "focus"
-              ? "rgb(13, 8, 163)"
-              : inputVariationColor === "error"
-              ? "rgb(241,12,95)"
-              : inputVariationColor === "filled"
-              ? "rgb(11,165,44)"
-              : "rgb(69,30,18)"
-          }
-          size="1.5rem"
-        />
-      </div>
-
-      <input
-        className={`outline-none w-full h-full bg-transparent ${
-          inputVariationColor === "focus"
-            ? "text-focus-color placeholder:text-focus-color"
-            : inputVariationColor === "error"
-            ? "text-error-color placeholder:text-error-color"
-            : inputVariationColor === "filled"
-            ? "text-filled-color placeholder:text-filled-color"
-            : "text-default-color placeholder:text-default-color"
-        }`}
-        ref={ref}
-        {...rest}
-        onFocus={handleInputFocus}
-        onBlurCapture={handleInputBlur}
-        onChangeCapture={(ev) => setValue(ev.currentTarget.value)}
-      />
+    <div className="w-full max-w-700 h-14 pl-4 pr-4 bg-white rounded-lg flex items-center gap-4 shadow-default">
+      {children}
     </div>
   );
-};
+}
 
-export const Input = forwardRef(InputBase);
+function InputSelect({ children, ...rest }: SelectFieldProps) {
+  return (
+    <select
+      className="w-20 outline-none font-medium cursor-pointer bg-white"
+      {...rest}
+    >
+      {children}
+    </select>
+  );
+}
+
+function InputField({ ...rest }: InputFieldProps) {
+  return (
+    <input
+      className="w-full text-xl outline-none bg-white text-text-900 placeholder:text-text-900"
+      {...rest}
+    />
+  );
+}
+
+Input.Field = InputField;
+Input.Select = InputSelect;
+
+export { Input };

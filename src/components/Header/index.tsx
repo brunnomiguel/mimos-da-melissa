@@ -1,100 +1,105 @@
 "use client";
 
-import {
-  Input,
-  Navbar,
-  Button,
-  NavbarItem,
-  NavbarContent,
-  NavbarMenuToggle,
-} from "@nextui-org/react";
+import { colors } from "@/styles/colors";
+import { IoMdMenu } from "react-icons/io";
+import { FaSearch, FaShoppingCart } from "react-icons/fa";
 
-import Link from "next/link";
+import logo from "../../../public/logo-header.png";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 
-import { useState } from "react";
-import { menuIcons } from "../../utils/icons";
-import { NavbarMenu } from "./NavbarMenu";
+import { Input } from "../Input";
 
-import logoHeader from "../../../public/images/logos/logo-header.png";
+import { Fragment, useEffect, useState } from "react";
 
 export function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [smallView, setSmallView] = useState(false);
 
-  const routes = useRouter();
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setSmallView(true);
+      } else {
+        setSmallView(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+  }, []);
 
   return (
-    <Navbar
-      className="w-full h-24"
-      maxWidth="full"
-      shouldHideOnScroll
-      isMenuOpen={isMenuOpen}
-      onMenuOpenChange={setIsMenuOpen}
-    >
-      <NavbarContent className="rounded-xl border-2 border-solid border-bg_form_color pl-2 pr-2 h-14 cursor-pointer">
-        <Button
-          className="bg-transparent w-full h-full"
-          as={NavbarMenuToggle}
-          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-        />
-      </NavbarContent>
+    <Fragment>
+      <header
+        className={`w-full h-26 pl-6 pr-6 gap-4 bg-pink-900 flex items-center justify-between ${
+          smallView && "mb-8"
+        }`}
+      >
+        <div className="flex items-center gap-4">
+          <div className="w-10 h-10 cursor-pointer hover:opacity-75">
+            <IoMdMenu size="2.5rem" fill={colors.white} />
+          </div>
+          {!smallView ? (
+            <div className="w-40 h-20 cursor-pointer">
+              <Image
+                className="w-full h-full rounded-xl"
+                src={logo}
+                alt="Logo Mimos da Melissa"
+              />
+            </div>
+          ) : null}
+        </div>
 
-      <NavbarContent className="w-full" justify="center">
-        <Image
-          className="rounded-2xl w-52 h-14 cursor-pointer"
-          src={logoHeader}
-          alt="Logo Mimos da Melissa"
-          onClick={() => routes.push("/")}
-        />
+        {smallView ? (
+          <div className="w-40 h-20 -mb-16 cursor-pointer">
+            <Image
+              className="w-full h-full rounded-xl"
+              src={logo}
+              alt="Logo Mimos da Melissa"
+            />
+          </div>
+        ) : null}
 
-        <Input
-          className="drop-shadow-input-default text-default-color placeholder:text-default-color w-full"
-          size="sm"
-          type="search"
-          placeholder="Pesquise algo..."
-          startContent={menuIcons.search}
-        />
+        {!smallView ? (
+          <Input>
+            <Input.Select name="filter-mimo" id="filter-mimo">
+              <option value="todos">Todos</option>
+              <option value="lacos-basicos">Básicos</option>
+              <option value="faixas-rn">Faixinhas RN</option>
+              <option value="tiaras">Tiaras</option>
+              <option value="apliques">Laço com Aplique</option>
+              <option value="aramados">Aramados</option>
+            </Input.Select>
+            <Input.Field placeholder="Pesquisar mimo..." />
+            <div className="w-8 h-8 cursor-pointer flex items-center justify-center bg-white">
+              <FaSearch size="1.75rem" />
+            </div>
+          </Input>
+        ) : null}
 
-        <NavbarContent className="gap-0">
-          <Button
-            className="font-semibold text-default-color bg-transparent rounded-tr-none rounded-br-none border-2 border-solid border-price-color hover:bg-price-color hover:text-white"
-            as={Link}
-            href="/signin"
-          >
-            Entrar
-          </Button>
-          <Button
-            className="bg-price-color text-white font-semibold rounded-tl-none rounded-bl-none"
-            as={Link}
-            href="/signup"
-          >
-            Criar Conta
-          </Button>
-        </NavbarContent>
+        <div className="w-10 h-10 cursor-pointer relative hover:opacity-75">
+          <span className="w-6 h-6 -top-3 -right-2 bg-white rounded-full absolute flex items-center justify-center font-semibold">
+            5
+          </span>
+          <FaShoppingCart size="2.5rem" fill={colors.white} />
+        </div>
+      </header>
 
-        <NavbarItem>
-          <Button
-            className="w-12 text-center font-semibold text-text_color text-lg hover:opacity-80 bg-transparent whitespace-normal leading-4"
-            as={Link}
-            href="#"
-          >
-            Meus Pedidos
-          </Button>
-        </NavbarItem>
-
-        <NavbarItem>
-          <Button
-            className="bg-transparent text-base font-semibold text-text_color"
-            startContent={menuIcons.cart}
-          >
-            Carrinho{" "}
-            <span className="font-bold text-2xl text-price-color">5</span>
-          </Button>
-        </NavbarItem>
-      </NavbarContent>
-
-      <NavbarMenu />
-    </Navbar>
+      {smallView ? (
+        <Input>
+          <Input.Select name="filter-mimo" id="filter-mimo">
+            <option value="todos">Todos</option>
+            <option value="lacos-basicos">Básicos</option>
+            <option value="faixas-rn">Faixinhas RN</option>
+            <option value="tiaras">Tiaras</option>
+            <option value="apliques">Laço com Aplique</option>
+            <option value="aramados">Aramados</option>
+          </Input.Select>
+          <Input.Field placeholder="Pesquisar mimo..." />
+          <div className="w-8 h-8 cursor-pointer flex items-center justify-center bg-white">
+            <FaSearch size="1.75rem" />
+          </div>
+        </Input>
+      ) : null}
+    </Fragment>
   );
 }

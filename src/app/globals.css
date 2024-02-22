@@ -2,27 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-body,
-nav {
-  background: linear-gradient(
-    180deg,
-    #e6a2a3 0%,
-    rgba(234, 124, 125, 0.1) 90.1%,
-    rgba(235, 119, 121, 0) 100%
-  );
-}
-
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #f10c5f;
-  border-radius: 4px;
-  border: 1px solid #f10c5f;
-}
-
-::-webkit-scrollbar-track {
-  background-color: #f8e6f3;
+.banner {
+  background: #d7799466;
+  background: linear-gradient(0deg, #d07390, #d7799466);
 }
