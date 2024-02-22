@@ -1,8 +1,5 @@
-"use client";
-
-import { ReactNode } from "react";
-import { NextUIProvider } from "@nextui-org/react";
+import { Fragment, ReactNode } from "react";
 
 export const Providers = ({ children }: { children: ReactNode }) => {
-  return <NextUIProvider>{children}</NextUIProvider>;
+  <Fragment>{children}</Fragment>;
 };
