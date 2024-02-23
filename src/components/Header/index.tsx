@@ -1,5 +1,3 @@
-"use client";
-
 import { colors } from "@/styles/colors";
 import { IoMdMenu } from "react-icons/io";
 import { FaSearch, FaShoppingCart } from "react-icons/fa";
@@ -9,57 +7,34 @@ import Image from "next/image";
 
 import { Input } from "../Input";
 
-import { Fragment, useEffect, useState } from "react";
+import { Fragment } from "react";
 
 export function Header() {
-  const [smallView, setSmallView] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setSmallView(true);
-      } else {
-        setSmallView(false);
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-    handleResize();
-  }, []);
-
   return (
     <Fragment>
-      <header
-        className={`w-full h-26 pl-6 pr-6 gap-4 bg-pink-900 flex items-center justify-between ${
-          smallView && "mb-8"
-        }`}
-      >
+      <header className="w-full h-26 pl-6 pr-6 gap-4 bg-pink-900 flex items-center justify-between mb-14 md:mb-0">
         <div className="flex items-center gap-4">
           <div className="w-10 h-10 cursor-pointer hover:opacity-75">
             <IoMdMenu size="2.5rem" fill={colors.white} />
           </div>
-          {!smallView ? (
-            <div className="w-40 h-20 cursor-pointer">
-              <Image
-                className="w-full h-full rounded-xl"
-                src={logo}
-                alt="Logo Mimos da Melissa"
-              />
-            </div>
-          ) : null}
-        </div>
-
-        {smallView ? (
-          <div className="w-40 h-20 -mb-16 cursor-pointer">
+          <div className="w-40 h-20 cursor-pointer hidden md:flex">
             <Image
               className="w-full h-full rounded-xl"
               src={logo}
               alt="Logo Mimos da Melissa"
             />
           </div>
-        ) : null}
+        </div>
 
-        {!smallView ? (
+        <div className="flex w-40 h-20 -mb-16 md:hidden">
+          <Image
+            className="w-full h-full rounded-xl"
+            src={logo}
+            alt="Logo Mimos da Melissa"
+          />
+        </div>
+
+        <div className="hidden md:flex">
           <Input>
             <Input.Select name="filter-mimo" id="filter-mimo">
               <option value="todos">Todos</option>
@@ -74,7 +49,7 @@ export function Header() {
               <FaSearch size="1.75rem" />
             </div>
           </Input>
-        ) : null}
+        </div>
 
         <div className="w-10 h-10 cursor-pointer relative hover:opacity-75">
           <span className="w-6 h-6 -top-3 -right-2 bg-white rounded-full absolute flex items-center justify-center font-semibold">
@@ -84,7 +59,7 @@ export function Header() {
         </div>
       </header>
 
-      {smallView ? (
+      <div className="pl-4 pr-4 mb-8 flex md:hidden">
         <Input>
           <Input.Select name="filter-mimo" id="filter-mimo">
             <option value="todos">Todos</option>
@@ -99,7 +74,7 @@ export function Header() {
             <FaSearch size="1.75rem" />
           </div>
         </Input>
-      ) : null}
+      </div>
     </Fragment>
   );
 }
