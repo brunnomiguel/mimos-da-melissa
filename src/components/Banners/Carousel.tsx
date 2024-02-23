@@ -31,7 +31,7 @@ export function Carousel({ images }: CarouselProps) {
         <FaArrowLeft color={colors.white} size="1.5rem" />
       </div>
 
-      <div className="w-full mt-0 md:mt-4">
+      <div className="w-full mt-0">
         {images.map((image, index) => (
           <div
             className={`max-w-1380 ml-auto mr-auto ${
