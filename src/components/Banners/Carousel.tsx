@@ -1,10 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
 import Image, { StaticImageData } from "next/image";
 
+import { colors } from "@/styles/colors";
+
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+
+import { useCarousel } from "@/hooks/useCarousel";
 
 interface Image {
   image: StaticImageData;
@@ -15,74 +17,40 @@ interface CarouselProps {
   images: Image[];
 }
 
-export default function Carousel({ images }: CarouselProps) {
-  const [current, setCurrent] = useState(0);
-  const [smallView, setSmallView] = useState(false);
+const classNames = {
+  contentIcon:
+    "flex items-center justify-center cursor-pointer w-10 h-10 md:w-16 md:h-16 absolute top-1/2 opacity-80 hover:opacity-100 bg-pink-900 rounded-full shadow-shadow_white",
+};
 
-  const length = images.length;
-
-  const nextSlide = () => {
-    setCurrent(current === length - 1 ? 0 : current + 1);
-  };
-
-  const prevSlide = () => {
-    setCurrent(current === 0 ? length - 1 : current - 1);
-  };
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 667) {
-        setSmallView(true);
-      } else {
-        setSmallView(false);
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-    handleResize();
-  }, []);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      nextSlide();
-    }, 5000);
-    return () => clearTimeout(timer);
-
-    // eslint-disable-next-line
-  }, [current]);
-
-  if (!Array.isArray(images) || images.length <= 0) {
-    return null;
-  }
+export function Carousel({ images }: CarouselProps) {
+  const { prevSlide, nextSlide, current } = useCarousel({ images });
 
   return (
-    <div className="w-full m-auto overflow-hidden relative bg-banner">
-      <div
-        className="cursor-pointer absolute left-0 top-1/2 transform -translate-y-1/2 pl-10 opacity-60 hover:opacity-100"
-        onClick={prevSlide}
-      >
-        <FaArrowLeft color="#F10C5F" size={smallView ? "1.5rem" : "2.5rem"} />
+    <div className="w-full banner shadow-blur overflow-hidden relative pl-4 pr-4">
+      <div className={`${classNames.contentIcon} left-3`} onClick={prevSlide}>
+        <FaArrowLeft color={colors.white} size="1.5rem" />
       </div>
 
-      <div className="flex w-full max-w-screen-2xl ml-auto mr-auto">
+      <div className="w-full mt-0 md:mt-4">
         {images.map((image, index) => (
-          <Image
-            className={`${
+          <div
+            className={`max-w-1380 ml-auto mr-auto ${
               index === current ? "block" : "hidden"
-            } w-full h-auto`}
+            }`}
             key={index}
-            src={image.image}
-            alt={image.name}
-            priority={true}
-          />
+          >
+            <Image
+              className="w-full max-h-600 rounded-2xl"
+              src={image.image}
+              alt={image.name}
+              priority={true}
+            />
+          </div>
         ))}
       </div>
 
-      <div
-        className="cursor-pointer absolute right-0 top-1/2 transform -translate-y-1/2 pr-10 opacity-60 hover:opacity-100"
-        onClick={nextSlide}
-      >
-        <FaArrowRight color="#F10C5F" size={smallView ? "1.5rem" : "2.5rem"} />
+      <div className={`${classNames.contentIcon} right-3`} onClick={nextSlide}>
+        <FaArrowRight color={colors.white} size="1.5rem" />
       </div>
     </div>
   );

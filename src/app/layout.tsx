@@ -1,6 +1,8 @@
+import "./globals.css";
+
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
-import "./globals.css";
+
 import { Layout } from "@/components/Layout";
 
 const roboto = Roboto({
@@ -21,8 +23,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${roboto.className} bg-white w-full text-text-900`}>
+    <html lang="pt-BR">
+      <body
+        className={`${roboto.className} bg-white w-full text-text-900`}
+        suppressHydrationWarning={true}
+      >
         <Layout>{children}</Layout>
       </body>
     </html>
