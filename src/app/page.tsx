@@ -1,7 +1,8 @@
-import { TopBanners } from "@/components/Banners";
-import { CategoryCards } from "@/components/CategoryCards";
-
 import { Fragment } from "react";
+
+import { TopBanners } from "@/components/Banners";
+import { Highlights } from "@/components/Highlights";
+import { CategoryCards } from "@/components/CategoryCards";
 
 export default function Home() {
   return (
@@ -9,6 +10,8 @@ export default function Home() {
       <TopBanners />
 
       <CategoryCards />
+
+      <Highlights />
     </Fragment>
   );
 }
