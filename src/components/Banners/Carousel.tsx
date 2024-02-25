@@ -8,7 +8,7 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 import { useCarousel } from "@/hooks/useCarousel";
 
-import { classNames } from "@/utils/classNamesIcon";
+import { NavigationIcon } from "../NavigationIcon";
 
 interface Image {
   image: StaticImageData;
@@ -24,12 +24,14 @@ export function Carousel({ images }: CarouselProps) {
 
   return (
     <div className="w-full banner shadow-blur relative pl-4 pr-4">
-      <div
-        className={`${classNames.contentIcon} left-3 bg-pink-900 shadow-shadow_white`}
+      <NavigationIcon
+        direction="left-3"
+        bgColor="bg-pink-900"
+        shadow="shadow-shadow_white"
         onClick={prevSlide}
       >
         <FaArrowLeft color={colors.white} size="1.5rem" />
-      </div>
+      </NavigationIcon>
 
       <div className="w-full mt-0">
         {images.map((image, index) => (
@@ -49,12 +51,14 @@ export function Carousel({ images }: CarouselProps) {
         ))}
       </div>
 
-      <div
-        className={`${classNames.contentIcon} right-3 bg-pink-900 shadow-shadow_white`}
+      <NavigationIcon
+        direction="right-3"
+        bgColor="bg-pink-900"
+        shadow="shadow-shadow_white"
         onClick={nextSlide}
       >
         <FaArrowRight color={colors.white} size="1.5rem" />
-      </div>
+      </NavigationIcon>
     </div>
   );
 }
