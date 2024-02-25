@@ -20,7 +20,7 @@ export function Product({
   const pricePromotion = price - price * (promotion_discount / 100);
 
   return (
-    <li className="w-44 p-2 bg-white shadow-default flex flex-col gap-2 rounded-lg lg:w-60">
+    <li className="w-full max-w-60 p-2 bg-white shadow-default flex flex-col gap-2 rounded-lg lg:w-60">
       <Image
         className="w-full h-3/6"
         src={imageExample}
