@@ -22,7 +22,7 @@ export function Highlights() {
 
   return (
     <section className="w-full overflow-hidden pl-4 pr-4 relative">
-      <h2 className="pl-4 mt-2 text-center text-2xl font-semibold lg:text-3xl lg:mb-4">
+      <h2 className="pl-4 mt-4 lg:mb-4 text-center text-2xl font-semibold lg:text-3xl">
         Destaques
       </h2>
 

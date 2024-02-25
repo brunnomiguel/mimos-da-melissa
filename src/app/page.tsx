@@ -5,6 +5,7 @@ import { Highlights } from "@/components/Highlights";
 import { CategoryCards } from "@/components/CategoryCards";
 import { Campaigns } from "@/components/Campaigns";
 import { Promotions } from "@/components/Promotions";
+import { NavigationCatalog } from "@/components/NavigationCatalog";
 
 export default function Home() {
   return (
@@ -18,6 +19,8 @@ export default function Home() {
       <Campaigns />
 
       <Promotions />
+
+      <NavigationCatalog />
     </Fragment>
   );
 }
