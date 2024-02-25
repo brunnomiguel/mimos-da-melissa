@@ -26,7 +26,7 @@ export const useCarousel = ({ images }: CarouselProps) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       nextSlide();
-    }, 5000);
+    }, 10000);
     return () => clearTimeout(timer);
 
     // eslint-disable-next-line
