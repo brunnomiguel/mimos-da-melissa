@@ -1,29 +1,33 @@
 "use client";
 
+import { useResize } from "@/hooks/useResize";
+import { useCarouselProducts } from "@/hooks/useCarouselProducts";
+
 import { colors } from "@/styles/colors";
+
+import { Product } from "../Product";
 
 import { classNames } from "@/utils/classNamesIcon";
 import { productData } from "@/utils/productData";
 
-import { useResize } from "@/hooks/useResize";
-import { useCarouselProducts } from "@/hooks/useCarouselProducts";
-
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
-import { Product } from "../Product";
-
-export function Highlights() {
+export function Promotions() {
   const { slidesToShow } = useResize();
 
+  const productsOnSale = productData.filter(
+    (product) => product.is_promotion === true
+  );
+
   const { prevSlide, nextSlide, slidesOffset } = useCarouselProducts(
-    productData,
+    productsOnSale,
     slidesToShow
   );
 
   return (
-    <section className="w-full overflow-hidden pl-4 pr-4 relative">
+    <section className="mt-6 w-full overflow-hidden pl-4 pr-4 relative">
       <h2 className="pl-4 mt-2 text-center text-2xl font-semibold lg:text-3xl lg:mb-4">
-        Destaques
+        Promoções
       </h2>
 
       <div className="w-full max-w-1380 lg:ml-auto lg:mr-auto">
@@ -35,7 +39,7 @@ export function Highlights() {
         </div>
 
         <ul className="w-full flex items-baseline gap-3 md:gap-4 lg:gap-10 mt-2 mb-2">
-          {productData
+          {productsOnSale
             .slice(slidesOffset, slidesOffset + slidesToShow)
             .map((product) => (
               <Product
