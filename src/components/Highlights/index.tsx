@@ -2,7 +2,6 @@
 
 import { colors } from "@/styles/colors";
 
-import { classNames } from "@/utils/classNamesIcon";
 import { productData } from "@/utils/productData";
 
 import { useResize } from "@/hooks/useResize";
@@ -11,6 +10,7 @@ import { useCarouselProducts } from "@/hooks/useCarouselProducts";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 import { Product } from "../Product";
+import { NavigationIcon } from "../NavigationIcon";
 
 export function Highlights() {
   const { slidesToShow } = useResize();
@@ -22,17 +22,19 @@ export function Highlights() {
 
   return (
     <section className="w-full overflow-hidden pl-4 pr-4 relative">
-      <h2 className="pl-4 mt-2 text-center text-2xl font-semibold lg:text-3xl lg:mb-4">
+      <h2 className="pl-4 mt-4 lg:mb-4 text-center text-2xl font-semibold lg:text-3xl">
         Destaques
       </h2>
 
       <div className="w-full max-w-1380 lg:ml-auto lg:mr-auto">
-        <div
-          className={`${classNames.contentIcon} left-3 bg-white shadow-default`}
+        <NavigationIcon
+          direction="left-3"
+          bgColor="bg-white"
+          shadow="shadow-default"
           onClick={prevSlide}
         >
           <FaArrowLeft color={colors.text[900]} size="1.5rem" />
-        </div>
+        </NavigationIcon>
 
         <ul className="w-full flex items-baseline gap-3 md:gap-4 lg:gap-10 mt-2 mb-2">
           {productData
@@ -48,12 +50,14 @@ export function Highlights() {
             ))}
         </ul>
 
-        <div
-          className={`${classNames.contentIcon} right-3 bg-white shadow-default`}
+        <NavigationIcon
+          direction="right-3"
+          bgColor="bg-white"
+          shadow="shadow-default"
           onClick={nextSlide}
         >
           <FaArrowRight color={colors.text[900]} size="1.5rem" />
-        </div>
+        </NavigationIcon>
       </div>
     </section>
   );
