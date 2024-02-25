@@ -1,22 +1,18 @@
 import { ProductData } from "@/@types/products";
 import { useEffect, useState } from "react";
 
-interface CarouselProps {
-  products: ProductData[];
-  slidesToShow: number;
-}
-
-export const useCarouselProducts = ({
-  products,
-  slidesToShow,
-}: CarouselProps) => {
+export const useCarouselProducts = (
+  products: ProductData[],
+  slidesToShow: number
+) => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [slidesOffset, setSlidesOffset] = useState(0); // Novo: offset para o início dos slides
+  const [slidesOffset, setSlidesOffset] = useState(0); // offset para o início dos slides
 
   const totalSlides = products.length;
 
   const nextSlide = () => {
     setCurrentSlide((prevSlide) => (prevSlide + 1) % totalSlides);
+
     if (currentSlide === totalSlides - slidesToShow) {
       // Se estiver no último grupo de slides, volta para o início
       setSlidesOffset(0);
@@ -42,7 +38,7 @@ export const useCarouselProducts = ({
   useEffect(() => {
     const timer = setTimeout(() => {
       nextSlide();
-    }, 5000);
+    }, 8000);
     return () => clearTimeout(timer);
 
     // eslint-disable-next-line
