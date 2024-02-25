@@ -7,6 +7,7 @@ import { colors } from "@/styles/colors";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 import { useCarousel } from "@/hooks/useCarousel";
+
 import { classNames } from "@/utils/classNamesIcon";
 
 interface Image {
@@ -22,7 +23,7 @@ export function Carousel({ images }: CarouselProps) {
   const { prevSlide, nextSlide, current } = useCarousel({ images });
 
   return (
-    <div className="w-full banner shadow-blur overflow-hidden relative pl-4 pr-4">
+    <div className="w-full banner shadow-blur relative pl-4 pr-4">
       <div
         className={`${classNames.contentIcon} left-3 bg-pink-900 shadow-shadow_white`}
         onClick={prevSlide}
