@@ -8,16 +8,20 @@ import imageMandaBem from "../../../public/manda-bem.png";
 import imageCorreios from "../../../public/correios.png";
 
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { FooterItem } from "./FooterItem";
+import { FooterContent } from "./FooterContent";
 
 const linkWhatsapp: string = "https://wa.me/message/TYVKBL6PIX7TL1";
 const linkInstagram: string =
   "https://www.instagram.com/mimosdamelissa_?igsh=MXE3czZwNWZzYmpkbg%3D%3D&utm_source=qr";
+const linkGoogle: string =
+  "https://transparencyreport.google.com/safe-browsing/search?url=www.mimosdamelissa.com.br";
 
 export function Footer() {
   return (
     <footer className="w-full px-4 py-10 mt-4">
-      <ul className="w-full max-w-1380 mr-auto ml-auto flex flex-wrap items-baseline gap-4 justify-between">
-        <li className="basis-80 flex flex-col items-center md:items-start">
+      <FooterContent>
+        <FooterItem>
           <h4 className="font-semibold text-xl md:text-2xl">Navegação</h4>
 
           <Link className="text-base font-medium hover:opacity-80" href="/">
@@ -41,27 +45,23 @@ export function Footer() {
           <Link className="text-base font-medium hover:opacity-80" href="/">
             Política de Privacidade
           </Link>
-        </li>
+        </FooterItem>
 
-        <li className="basis-80 flex flex-col items-center gap-2 md:items-start">
+        <FooterItem>
           <h4 className="font-semibold text-xl md:text-2xl">
             Informação Legal
           </h4>
-          <Link
-            target="_blank"
-            rel="noreferrer"
-            href="https://transparencyreport.google.com/safe-browsing/search?url=www.mimosdamelissa.com.br"
-          >
+          <Link target="_blank" rel="noreferrer" href={linkGoogle}>
             <Image
               className="cursor-pointer"
               src={imageGoogle}
               alt="Imagem Google de Site Seguro"
             />
           </Link>
-        </li>
+        </FooterItem>
 
-        <div className="basis-80 flex flex-col items-center gap-3 md:items-start">
-          <li className="flex flex-col items-center md:items-start">
+        <FooterItem>
+          <div className="flex flex-col items-center md:items-start mb-3">
             <h4 className="font-semibold text-xl md:text-2xl">
               Formas de Pagamento
             </h4>
@@ -77,8 +77,8 @@ export function Footer() {
                 alt="Imagem de Boleto Bancário"
               />
             </div>
-          </li>
-          <li className="flex flex-col items-center md:items-start">
+          </div>
+          <div className="flex flex-col items-center md:items-start">
             <h4 className="font-semibold text-xl md:text-2xl">
               Formas de Envio
             </h4>
@@ -94,10 +94,10 @@ export function Footer() {
                 alt="Logo do Manda Bem"
               />
             </div>
-          </li>
-        </div>
+          </div>
+        </FooterItem>
 
-        <li className="basis-80 flex flex-col items-center gap-2 md:items-start">
+        <FooterItem>
           <h4 className="font-semibold text-2xl mb-2">Contatos</h4>
 
           <div className="flex flex-col gap-3">
@@ -120,8 +120,8 @@ export function Footer() {
               <p className="font-semibold text-xl">mimosdamelissa_</p>
             </Link>
           </div>
-        </li>
-      </ul>
+        </FooterItem>
+      </FooterContent>
     </footer>
   );
 }
