@@ -1,6 +1,7 @@
 import { Fragment, ReactNode } from "react";
 
 import { Header } from "../Header";
+import { Footer } from "../Footer";
 
 export function Layout({ children }: { children: ReactNode }) {
   return (
@@ -9,7 +10,7 @@ export function Layout({ children }: { children: ReactNode }) {
 
       <main className="flex-1">{children}</main>
 
-      <footer>Sou o Footer</footer>
+      <Footer />
     </Fragment>
   );
 }
