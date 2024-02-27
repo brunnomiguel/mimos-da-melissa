@@ -1,60 +1,81 @@
-import Image from "next/image";
-import imageExample from "../../../public/image-exemple.png";
+import { ProductContainer } from "./ProductContainer";
+import { ProductContentImage } from "./ProductContentImage";
+import {
+  ProductContentInfo,
+  ProductContentInfoTitle,
+  ProductContentInfoPrice,
+  ProductContentInfoButtons,
+} from "./ProductContentInfo";
 
-import { currencyFormat } from "@/utils/currencyFormat";
-import { FaEye } from "react-icons/fa";
+export const Product = {
+  Container: ProductContainer,
+  ContentImage: ProductContentImage,
+  ContentInfo: ProductContentInfo,
+  ContentInfoTitle: ProductContentInfoTitle,
+  ContentInfoPrice: ProductContentInfoPrice,
+  ContentInfoButtons: ProductContentInfoButtons,
+};
 
-interface ProductProps {
-  name: string;
-  price: number;
-  is_promotion: boolean;
-  promotion_discount: number;
-}
+// import Image from "next/image";
+// import imageExample from "../../../public/image-exemple.png";
 
-export function Product({
-  name,
-  price,
-  is_promotion,
-  promotion_discount,
-}: ProductProps) {
-  const pricePromotion = price - price * (promotion_discount / 100);
+// import { currencyFormat } from "@/utils/currencyFormat";
 
-  return (
-    <li className="w-full max-w-60 p-2 bg-white shadow-default flex flex-col gap-2 rounded-lg lg:w-60">
-      <Image
-        className="w-full h-3/6"
-        src={imageExample}
-        alt="Imagem de exemplo"
-      />
+// import { FaEye } from "react-icons/fa";
 
-      <div className="flex flex-col gap-2">
-        <h4 className="font-semibold text-lg leading-5">{name}</h4>
+// interface ProductProps {
+//   name: string;
+//   price: number;
+//   is_promotion: boolean;
+//   promotion_discount: number;
+// }
 
-        {is_promotion ? (
-          <p className="font-semibold text-base">
-            de: <del>{currencyFormat(String(price))}</del>
-          </p>
-        ) : null}
+// export function Product({
+//   name,
+//   price,
+//   is_promotion,
+//   promotion_discount,
+// }: ProductProps) {
+//   const pricePromotion = price - price * (promotion_discount / 100);
 
-        {is_promotion ? (
-          <p className="font-bold text-xl">
-            por: {currencyFormat(String(pricePromotion))}
-          </p>
-        ) : null}
+//   return (
+//     <li className="w-full max-w-60 p-2 bg-white shadow-default flex flex-col gap-2 rounded-lg lg:w-60">
+//       <div className="w-full h-3/6">
+//         <Image
+//           className="w-full h-full"
+//           src={imageExample}
+//           alt="Imagem de exemplo"
+//         />
+//       </div>
 
-        {!is_promotion ? (
-          <p className="font-bold text-xl">{currencyFormat(String(price))}</p>
-        ) : null}
+//       <div className="flex flex-col gap-2">
+//         <h4 className="font-semibold text-lg leading-5">{name}</h4>
 
-        <div className="flex items-center gap-2">
-          <button className="w-3/4 p-1 bg-pink-900 text-white font-semibold text-sm rounded-md cursor-pointer hover:opacity-70">
-            COMPRAR
-          </button>
-          <button className="w-1/4 p-1 flex items-center justify-center bg-white text-pink-900 border-2 border-pink-900 font-semibold text-sm rounded-md cursor-pointer hover:opacity-70">
-            <FaEye size="1rem" />
-          </button>
-        </div>
-      </div>
-    </li>
-  );
-}
+//         {is_promotion ? (
+//           <p className="font-semibold text-base">
+//             de: <del>{currencyFormat(String(price))}</del>
+//           </p>
+//         ) : null}
+
+//         {is_promotion ? (
+//           <p className="font-bold text-xl">
+//             por: {currencyFormat(String(pricePromotion))}
+//           </p>
+//         ) : null}
+
+//         {!is_promotion ? (
+//           <p className="font-bold text-xl">{currencyFormat(String(price))}</p>
+//         ) : null}
+
+//         <div className="flex items-center gap-2">
+//           <button className="w-3/4 p-1 bg-pink-900 text-white font-semibold text-sm rounded-md cursor-pointer hover:opacity-70">
+//             COMPRAR
+//           </button>
+//           <button className="w-1/4 p-1 flex items-center justify-center bg-white text-pink-900 border-2 border-pink-900 font-semibold text-sm rounded-md cursor-pointer hover:opacity-70">
+//             <FaEye size="1rem" />
+//           </button>
+//         </div>
+//       </div>
+//     </li>
+//   );
+// }
