@@ -7,7 +7,7 @@ interface SelectFieldProps extends SelectHTMLAttributes<HTMLSelectElement> {
 
 function Input({ children }: { children: ReactNode }) {
   return (
-    <div className="w-full max-w-700 h-14 pl-4 pr-4 bg-white rounded-lg flex items-center gap-4 shadow-default">
+    <div className="w-full max-w-768 h-14 pl-4 pr-4 bg-white rounded-lg flex items-center gap-4 shadow-default">
       {children}
     </div>
   );

@@ -11,6 +11,9 @@ const config: Config = {
   theme: {
     extend: {
       colors,
+      backgroundColor: {
+        modal: "rgba(18, 18, 20, 0.5)",
+      },
       width: {
         768: "48rem",
       },
@@ -20,6 +23,9 @@ const config: Config = {
         400: "25rem",
         500: "31.25rem",
         550: "34.375rem",
+      },
+      minHeight: {
+        "80-vh": "80vh",
       },
       maxHeight: { 400: "25rem", 600: "37.5rem", 700: "43.75rem" },
       maxWidth: {
