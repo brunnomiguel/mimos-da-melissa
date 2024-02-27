@@ -12,6 +12,8 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { Product } from "../Product";
 import { NavigationIcon } from "../NavigationIcon";
 
+import imageExample from "../../../public/image-exemple.png";
+
 export function Highlights() {
   const { slidesToShow } = useResize();
 
@@ -40,13 +42,18 @@ export function Highlights() {
           {productData
             .slice(slidesOffset, slidesOffset + slidesToShow)
             .map((product) => (
-              <Product
-                key={product.id}
-                name={product.name}
-                price={product.price}
-                is_promotion={product.is_promotion}
-                promotion_discount={product.promotion_discount}
-              />
+              <Product.Container key={product.id}>
+                <Product.ContentImage src={imageExample} alt={product.name} />
+                <Product.ContentInfo>
+                  <Product.ContentInfoTitle title={product.name} />
+                  <Product.ContentInfoPrice
+                    price={product.price}
+                    is_promotion={product.is_promotion}
+                    promotion_discount={product.promotion_discount}
+                  />
+                  <Product.ContentInfoButtons />
+                </Product.ContentInfo>
+              </Product.Container>
             ))}
         </ul>
 

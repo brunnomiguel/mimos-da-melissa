@@ -10,6 +10,7 @@ import imageCorreios from "../../../public/correios.png";
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { FooterItem } from "./FooterItem";
 import { FooterContent } from "./FooterContent";
+import { FooterLink } from "./FooterLink";
 
 const linkWhatsapp: string = "https://wa.me/message/TYVKBL6PIX7TL1";
 const linkInstagram: string =
@@ -24,27 +25,13 @@ export function Footer() {
         <FooterItem>
           <h4 className="font-semibold text-xl md:text-2xl">Navegação</h4>
 
-          <Link className="text-base font-medium hover:opacity-80" href="/">
-            Início
-          </Link>
-          <Link className="text-base font-medium hover:opacity-80" href="/">
-            Quem Somos
-          </Link>
-          <Link className="text-base font-medium hover:opacity-80" href="/">
-            Login
-          </Link>
-          <Link className="text-base font-medium hover:opacity-80" href="/">
-            Cadastro
-          </Link>
-          <Link className="text-base font-medium hover:opacity-80" href="/">
-            Meus Pedidos
-          </Link>
-          <Link className="text-base font-medium hover:opacity-80" href="/">
-            Produtos
-          </Link>
-          <Link className="text-base font-medium hover:opacity-80" href="/">
-            Política de Privacidade
-          </Link>
+          <FooterLink href="/">Início</FooterLink>
+          <FooterLink href="/sobre">Quem somos</FooterLink>
+          <FooterLink href="/login">Login</FooterLink>
+          <FooterLink href="/cadastro">Cadastro</FooterLink>
+          <FooterLink href="/pedidos">Meus Pedidos</FooterLink>
+          <FooterLink href="/produtos">Produtos</FooterLink>
+          <FooterLink href="/politica">Política de Privacidade</FooterLink>
         </FooterItem>
 
         <FooterItem>
