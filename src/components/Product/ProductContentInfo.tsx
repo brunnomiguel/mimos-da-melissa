@@ -2,7 +2,9 @@ import { Fragment, ReactNode } from "react";
 
 import { currencyFormat } from "@/utils/currencyFormat";
 
-import { FaEye } from "react-icons/fa";
+import { FaEye, FaRegHeart } from "react-icons/fa";
+
+import { colors } from "@/styles/colors";
 
 type ProductContentInfoPriceProps = {
   price: number;
@@ -15,7 +17,15 @@ export function ProductContentInfo({ children }: { children: ReactNode }) {
 }
 
 export function ProductContentInfoTitle({ title }: { title: string }) {
-  return <h4 className="font-semibold text-lg leading-5">{title}</h4>;
+  return (
+    <div className="flex items-center justify-between gap-2">
+      <h4 className="font-semibold text-lg leading-5">{title}</h4>
+
+      <div className="cursor-pointer">
+        <FaRegHeart size="1.5rem" fill={colors.pink[900]} />
+      </div>
+    </div>
+  );
 }
 
 export function ProductContentInfoPrice({
