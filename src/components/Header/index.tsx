@@ -1,5 +1,4 @@
 import { colors } from "@/styles/colors";
-import { IoMdMenu } from "react-icons/io";
 import { FaSearch, FaShoppingCart } from "react-icons/fa";
 
 import logo from "../../../public/logo-header.png";
@@ -8,15 +7,14 @@ import Image from "next/image";
 import { Input } from "../Input";
 
 import { Fragment } from "react";
+import { Drawer } from "./Drawer";
 
 export function Header() {
   return (
     <Fragment>
       <header className="w-full h-26 pl-6 pr-6 gap-4 bg-pink-900 flex items-center justify-between mb-14 md:mb-0">
         <div className="flex items-center gap-4">
-          <div className="w-10 h-10 cursor-pointer hover:opacity-75">
-            <IoMdMenu size="2.5rem" fill={colors.white} />
-          </div>
+          <Drawer />
           <div className="w-40 h-20 cursor-pointer hidden md:flex">
             <Image
               className="w-full h-full rounded-xl"
