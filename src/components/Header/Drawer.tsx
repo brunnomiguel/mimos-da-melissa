@@ -2,19 +2,21 @@
 
 import { colors } from "@/styles/colors";
 import { useState } from "react";
+
 import {
-  FaHeart,
   FaHome,
   FaInfo,
-  FaShoppingBasket,
-  FaShoppingCart,
   FaTimes,
+  FaHeart,
+  FaShoppingCart,
+  FaShoppingBasket,
 } from "react-icons/fa";
 import { FaGear } from "react-icons/fa6";
-import { GrCatalog } from "react-icons/gr";
-import { IoMdMenu } from "react-icons/io";
-import { DrawerOption } from "./DrawerOption";
 import { FiLogIn } from "react-icons/fi";
+import { IoMdMenu } from "react-icons/io";
+import { GrCatalog } from "react-icons/gr";
+
+import { DrawerOption } from "./DrawerOption";
 
 export function Drawer() {
   const [isOpen, setIsOpen] = useState(false);
@@ -51,42 +53,42 @@ export function Drawer() {
             </h4>
           </div>
 
-          <DrawerOption.Container>
+          <DrawerOption.Container href="/" onClick={toggleDrawer}>
             <DrawerOption.Icon icon={FaHome} />
             <DrawerOption.Title>Inicio</DrawerOption.Title>
           </DrawerOption.Container>
 
-          <DrawerOption.Container>
+          <DrawerOption.Container href="/produtos" onClick={toggleDrawer}>
             <DrawerOption.Icon icon={GrCatalog} />
-            <DrawerOption.Title>Catálog</DrawerOption.Title>
+            <DrawerOption.Title>Catálogo</DrawerOption.Title>
           </DrawerOption.Container>
 
-          <DrawerOption.Container>
+          <DrawerOption.Container href="/sobre" onClick={toggleDrawer}>
             <DrawerOption.Icon icon={FaInfo} />
             <DrawerOption.Title>Sobre nós</DrawerOption.Title>
           </DrawerOption.Container>
 
-          <DrawerOption.Container>
+          <DrawerOption.Container href="/pedidos" onClick={toggleDrawer}>
             <DrawerOption.Icon icon={FaShoppingBasket} />
             <DrawerOption.Title>Pedidos</DrawerOption.Title>
           </DrawerOption.Container>
 
-          <DrawerOption.Container>
+          <DrawerOption.Container href="carrinho" onClick={toggleDrawer}>
             <DrawerOption.Icon icon={FaShoppingCart} />
             <DrawerOption.Title>Carrinho</DrawerOption.Title>
           </DrawerOption.Container>
 
-          <DrawerOption.Container>
+          <DrawerOption.Container href="favoritos" onClick={toggleDrawer}>
             <DrawerOption.Icon icon={FaHeart} />
             <DrawerOption.Title>Favoritos</DrawerOption.Title>
           </DrawerOption.Container>
 
-          <DrawerOption.Container>
+          <DrawerOption.Container href="configuracoes" onClick={toggleDrawer}>
             <DrawerOption.Icon icon={FaGear} />
             <DrawerOption.Title>Configurações</DrawerOption.Title>
           </DrawerOption.Container>
 
-          <DrawerOption.Container>
+          <DrawerOption.Container href="/login" onClick={toggleDrawer}>
             <DrawerOption.Icon icon={FiLogIn} />
             <DrawerOption.Title>Faça Login</DrawerOption.Title>
           </DrawerOption.Container>

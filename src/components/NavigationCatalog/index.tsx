@@ -8,6 +8,7 @@ import {
 } from "react-icons/fa";
 
 import { NavOption } from "./NavOptions";
+import Link from "next/link";
 
 export function NavigationCatalog() {
   return (
@@ -43,9 +44,12 @@ export function NavigationCatalog() {
           Conheça o nosso catálogo
         </h2>
 
-        <button className="w-60 h-14 flex items-center justify-center gap-3 bg-white font-semibold text-xl rounded-lg shadow-default cursor-pointer hover:opacity-75">
+        <Link
+          className="w-60 h-14 flex items-center justify-center gap-3 bg-white font-semibold text-xl rounded-lg shadow-default cursor-pointer hover:opacity-75"
+          href="/produtos"
+        >
           VER TUDO <FaArrowRight color={colors.text[900]} size="1.5rem" />
-        </button>
+        </Link>
       </div>
     </section>
   );
