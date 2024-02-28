@@ -8,9 +8,10 @@ import imageMandaBem from "../../../public/manda-bem.png";
 import imageCorreios from "../../../public/correios.png";
 
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
+
 import { FooterItem } from "./FooterItem";
-import { FooterContent } from "./FooterContent";
 import { FooterLink } from "./FooterLink";
+import { FooterContent } from "./FooterContent";
 
 const linkWhatsapp: string = "https://wa.me/message/TYVKBL6PIX7TL1";
 const linkInstagram: string =
