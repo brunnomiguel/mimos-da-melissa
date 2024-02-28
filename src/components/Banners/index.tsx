@@ -1,8 +1,8 @@
 import { Carousel } from "./Carousel";
 
-import bannerOne from "../../../public/home-pascoa.png";
-import bannerTwo from "../../../public/home-bem-vindo.png";
-import bannerThree from "../../../public/home-pascoa.png";
+import bannerBoasVindas from "../../../public/home-boas-vindas.png";
+import bannerPascoa from "../../../public/home-pascoa.png";
+import bannerHomePrazos from "../../../public/home-prazos.png";
 
 import { StaticImageData } from "next/image";
 
@@ -12,9 +12,9 @@ interface Image {
 }
 
 const images: Image[] = [
-  { image: bannerOne, name: "Banner Tema Páscoa" },
-  { image: bannerTwo, name: "Banner Tema Páscoa 1" },
-  { image: bannerThree, name: "Banner Tema Páscoa 2" },
+  { image: bannerBoasVindas, name: "Banner de Boas Vindas" },
+  { image: bannerPascoa, name: "Banner Tema Páscoa" },
+  { image: bannerHomePrazos, name: "Banner Prazos de envio" },
 ];
 
 export function TopBanners() {

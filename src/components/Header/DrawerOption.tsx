@@ -1,12 +1,28 @@
-import { colors } from "@/styles/colors";
+import Link from "next/link";
+
 import { ReactNode } from "react";
+
+import { colors } from "@/styles/colors";
+
 import { IconType } from "react-icons";
 
-function DrawerOptionContainer({ children }: { children: ReactNode }) {
+function DrawerOptionContainer({
+  href,
+  onClick = () => {},
+  children,
+}: {
+  href: string;
+  onClick: () => void;
+  children: ReactNode;
+}) {
   return (
-    <div className="w-full flex items-center gap-2 shadow-shadow_white p-2 rounded-md opacity-80 hover:opacity-100 cursor-pointer">
+    <Link
+      className="w-full flex items-center gap-2 shadow-shadow_white p-2 rounded-md opacity-80 hover:opacity-100 cursor-pointer"
+      href={href}
+      onClick={onClick}
+    >
       {children}
-    </div>
+    </Link>
   );
 }
 

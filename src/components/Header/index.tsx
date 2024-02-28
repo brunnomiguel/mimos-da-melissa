@@ -1,12 +1,14 @@
+import Image from "next/image";
+
+import { Fragment } from "react";
+
 import { colors } from "@/styles/colors";
+
 import { FaSearch, FaShoppingCart } from "react-icons/fa";
 
 import logo from "../../../public/logo-header.png";
-import Image from "next/image";
 
 import { Input } from "../Input";
-
-import { Fragment } from "react";
 import { Drawer } from "./Drawer";
 
 export function Header() {
