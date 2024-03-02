@@ -1,15 +1,19 @@
-import { ProductContainer } from "./ProductContainer";
-import { ProductContentImage } from "./ProductContentImage";
 import {
+  ProductContainer,
+  ProductContentImage,
   ProductContentInfo,
   ProductContentInfoTitle,
   ProductContentInfoPrice,
   ProductContentInfoButtons,
-} from "./ProductContentInfo";
+  ProductContentFavoriteIcon,
+  ProductContentSale,
+} from "./ProductContainer";
 
 export const Product = {
   Container: ProductContainer,
   ContentImage: ProductContentImage,
+  ContentFavoriteIcon: ProductContentFavoriteIcon,
+  ContentSale: ProductContentSale,
   ContentInfo: ProductContentInfo,
   ContentInfoTitle: ProductContentInfoTitle,
   ContentInfoPrice: ProductContentInfoPrice,

@@ -1,74 +1,52 @@
 "use client";
 
-import { useResize } from "@/hooks/useResize";
-import { useCarouselProducts } from "@/hooks/useCarouselProducts";
-
 import { colors } from "@/styles/colors";
 
 import { Product } from "../Product";
 import { NavigationIcon } from "../NavigationIcon";
 
-import { productData } from "@/utils/productData";
-
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 import imageExample from "../../../public/image-exemple.png";
+import { productData } from "@/utils/productData";
+import Link from "next/link";
 
 export function Promotions() {
-  const { slidesToShow } = useResize();
-
-  const productsOnSale = productData.filter(
-    (product) => product.is_promotion === true
-  );
-
-  const { prevSlide, nextSlide, slidesOffset } = useCarouselProducts(
-    productsOnSale,
-    slidesToShow
-  );
+  const productsOnSale = productData.filter((product) => product.is_promotion);
 
   return (
     <section className="mt-6 w-full overflow-hidden pl-4 pr-4 relative">
-      <h2 className="pl-4 mt-4 mb-4 text-center text-2xl font-semibold lg:text-3xl">
-        Promoções
-      </h2>
-
       <div className="w-full max-w-1380 lg:ml-auto lg:mr-auto">
-        <NavigationIcon
-          direction="left-3"
-          bgColor="bg-white"
-          shadow="shadow-default"
-          onClick={prevSlide}
-        >
-          <FaArrowLeft color={colors.text[900]} size="1.5rem" />
-        </NavigationIcon>
+        <div className="mt-6 flex items-center justify-between">
+          <h2 className="text-2xl font-semibold lg:text-3xl">Promoções</h2>
 
-        <ul className="w-full flex items-baseline gap-3 md:gap-4 lg:gap-10 mt-2 mb-2">
-          {productsOnSale
-            .slice(slidesOffset, slidesOffset + slidesToShow)
-            .map((product) => (
-              <Product.Container key={product.id}>
-                <Product.ContentImage src={imageExample} alt={product.name} />
-                <Product.ContentInfo>
-                  <Product.ContentInfoTitle title={product.name} />
-                  <Product.ContentInfoPrice
-                    price={product.price}
-                    is_promotion={product.is_promotion}
-                    promotion_discount={product.promotion_discount}
-                  />
-                  <Product.ContentInfoButtons />
-                </Product.ContentInfo>
-              </Product.Container>
-            ))}
+          <Link
+            className="flex items-center justify-center gap-2 hover:opacity-80"
+            href="/produtos"
+          >
+            Ver mais <FaArrowRight color={colors.text[900]} size="1rem" />
+          </Link>
+        </div>
+
+        <ul className="w-full flex items-baseline md:justify-between gap-3 px-1 pb-4 lg:gap-4 mt-2 mb-2 overflow-x-scroll overflow-y-hidden md:overflow-hidden">
+          {productsOnSale.slice(0, 5).map((product) => (
+            <Product.Container key={product.id}>
+              <Product.ContentImage src={imageExample} alt={product.name}>
+                <Product.ContentFavoriteIcon />
+                <Product.ContentSale discount={product.promotion_discount} />
+              </Product.ContentImage>
+              <Product.ContentInfo>
+                <Product.ContentInfoTitle title={product.name} />
+                <Product.ContentInfoPrice
+                  price={product.price}
+                  is_promotion={product.is_promotion}
+                  promotion_discount={product.promotion_discount}
+                />
+                <Product.ContentInfoButtons />
+              </Product.ContentInfo>
+            </Product.Container>
+          ))}
         </ul>
-
-        <NavigationIcon
-          direction="right-3"
-          bgColor="bg-white"
-          shadow="shadow-default"
-          onClick={nextSlide}
-        >
-          <FaArrowRight color={colors.text[900]} size="1.5rem" />
-        </NavigationIcon>
       </div>
     </section>
   );
