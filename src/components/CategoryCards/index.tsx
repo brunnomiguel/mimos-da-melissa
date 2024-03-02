@@ -1,16 +1,18 @@
-import "./styles.css";
+import "../../styles/scrollbar.css";
 
 import { Card } from "./Card";
+import { categoryData } from "@/utils/categoryData";
 
 export function CategoryCards() {
   return (
     <section className="w-full max-w-1380 mr-auto ml-auto">
-      <ul className="w-full flex items-center md:justify-around pl-4 pr-4 pb-4 gap-2 md:gap-4 -mt-4 md:-mt-14 relative overflow-x-scroll overflow-y-hidden custom-scrollbar">
-        <Card text="Laços" />
-        <Card text="Básicos" />
-        <Card text="Faixinhas RN" />
-        <Card text="Tiaras" />
-        <Card text="Aramados" />
+      <ul className="w-full flex items-center md:justify-around px-4 pb-4 gap-2 md:gap-4 -mt-1 md:-mt-6 relative overflow-x-scroll overflow-y-hidden md:overflow-hidden custom-scrollbar">
+        {categoryData.map((category) => (
+          <Card.Container key={category.id}>
+            <Card.Image />
+            <Card.Text text={category.name} />
+          </Card.Container>
+        ))}
       </ul>
     </section>
   );

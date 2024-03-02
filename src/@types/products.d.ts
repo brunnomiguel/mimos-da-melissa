@@ -1,9 +1,9 @@
-export interface ImageProduct {
+export type ImageProduct = {
   id: string;
   path: string;
-}
+};
 
-export interface ProductData {
+export type ProductData = {
   id: string;
   name: string;
   category: string;
@@ -22,4 +22,4 @@ export interface ProductData {
   created_at: string;
   updated_at: string;
   images: ImageProduct[];
-}
+};
