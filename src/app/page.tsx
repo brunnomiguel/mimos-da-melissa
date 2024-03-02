@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, Suspense } from "react";
 
 import { TopBanners } from "@/components/Banners";
 import { Highlights } from "@/components/Highlights";
@@ -7,6 +7,8 @@ import { Campaigns } from "@/components/Campaigns";
 import { Promotions } from "@/components/Promotions";
 import { NavigationCatalog } from "@/components/NavigationCatalog";
 
+import LoadingProducts from "./loading";
+
 export default function Home() {
   return (
     <Fragment>
@@ -14,11 +16,15 @@ export default function Home() {
 
       <CategoryCards />
 
-      <Highlights />
+      <Suspense fallback={<LoadingProducts title="Destaques" />}>
+        <Highlights />
+      </Suspense>
 
       <Campaigns />
 
-      <Promotions />
+      <Suspense fallback={<LoadingProducts title="Promoções" />}>
+        <Promotions />
+      </Suspense>
 
       <NavigationCatalog />
     </Fragment>

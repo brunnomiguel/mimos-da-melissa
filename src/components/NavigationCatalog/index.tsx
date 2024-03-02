@@ -12,7 +12,7 @@ import Link from "next/link";
 
 export function NavigationCatalog() {
   return (
-    <section className="w-full banner shadow-blur px-4 py-10 mt-8">
+    <section className="w-full banner px-4 py-10 mt-8">
       <div className="w-full h-full max-w-1380 mr-auto ml-auto mb-8 flex flex-wrap items-center justify-center gap-3 md:flex-row md:justify-around">
         <NavOption.Container>
           <NavOption.Content>
