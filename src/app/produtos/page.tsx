@@ -35,7 +35,10 @@ export default function Products() {
         <ul className="w-full md:w-3/4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-items-center">
           {productData.map((product) => (
             <Product.Container key={product.id}>
-              <Product.ContentImage src={imageExample} alt={product.name} />
+              <Product.ContentImage src={imageExample} alt={product.name}>
+                <Product.ContentFavoriteIcon />
+                <Product.ContentSale discount={product.promotion_discount} />
+              </Product.ContentImage>
               <Product.ContentInfo>
                 <Product.ContentInfoTitle title={product.name} />
                 <Product.ContentInfoPrice
