@@ -41,7 +41,7 @@ export function Catalog() {
         </ul>
 
         <Link
-          className="w-52 mx-auto flex items-center justify-center gap-2 hover:opacity-80 bg-white shadow-default p-2"
+          className="w-52 mx-auto flex items-center justify-center gap-2 hover:opacity-80 bg-white shadow-default p-2 rounded-md"
           href="/produtos"
         >
           Ver mais <FaArrowRight color={colors.text[900]} size="1rem" />
