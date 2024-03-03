@@ -22,7 +22,7 @@ type ProductContentInfoPriceProps = {
 
 export function ProductContainer({ children }: { children: ReactNode }) {
   return (
-    <li className="w-full max-w-60 p-2 bg-white shadow-default flex flex-col gap-2 rounded-lg">
+    <li className="w-full h-full max-w-60 p-2 bg-white shadow-default flex flex-col gap-2 rounded-lg">
       {children}
     </li>
   );
@@ -34,7 +34,7 @@ export function ProductContentImage({
   children,
 }: ProductContentImageProps) {
   return (
-    <div className="w-full h-3/5 relative">
+    <div className="w-full relative">
       <Image className="w-full h-full" src={src} alt={alt} />
       {children}
     </div>
@@ -51,14 +51,14 @@ export function ProductContentFavoriteIcon() {
 
 export function ProductContentSale({ discount }: { discount: number }) {
   return (
-    <div className="flex items-center justify-center cursor-pointer absolute top-1 left-1 w-10 h-8 p-1 bg-white rounded-lg">
+    <div className="flex items-center justify-center absolute top-1 left-1 w-10 h-8 p-1 bg-white rounded-lg">
       <p className="font-bold text-pink-900">{discount}%</p>
     </div>
   );
 }
 
 export function ProductContentInfo({ children }: { children: ReactNode }) {
-  return <div className="flex flex-col gap-2 w-52 md:w-full">{children}</div>;
+  return <div className="w-52 flex flex-col gap-2 md:w-full">{children}</div>;
 }
 
 export function ProductContentInfoTitle({ title }: { title: string }) {

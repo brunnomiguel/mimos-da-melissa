@@ -9,7 +9,6 @@ import { FaArrowRight } from "react-icons/fa";
 import { Product } from "../Product";
 
 import imageExample from "../../../public/image-exemple.png";
-import { ProductSkeleton } from "../Skeletons/ProductSkeleton";
 
 export function Highlights() {
   return (

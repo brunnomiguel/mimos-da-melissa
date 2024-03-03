@@ -1,35 +1,27 @@
 "use client";
 
+import Link from "next/link";
+
+import imageExample from "../../../public/image-exemple.png";
+
 import { colors } from "@/styles/colors";
 
 import { Product } from "../Product";
-import { NavigationIcon } from "../NavigationIcon";
 
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { FaArrowRight } from "react-icons/fa";
 
-import imageExample from "../../../public/image-exemple.png";
 import { productData } from "@/utils/productData";
-import Link from "next/link";
 
-export function Promotions() {
-  const productsOnSale = productData.filter((product) => product.is_promotion);
-
+export function Catalog() {
   return (
     <section className="mt-6 w-full overflow-hidden pl-4 pr-4 relative">
-      <div className="w-full max-w-1380 lg:ml-auto lg:mr-auto">
-        <div className="mt-6 flex items-center justify-between">
-          <h2 className="text-2xl font-semibold lg:text-3xl">Promoções</h2>
+      <div className="w-full max-w-1380 lg:mx-auto pb-2">
+        <h2 className="text-2xl font-semibold lg:text-3xl text-center my-4">
+          Catálogo
+        </h2>
 
-          <Link
-            className="flex items-center justify-center gap-2 hover:opacity-80"
-            href="/produtos"
-          >
-            Ver mais <FaArrowRight color={colors.text[900]} size="1rem" />
-          </Link>
-        </div>
-
-        <ul className="w-full flex items-baseline md:justify-between gap-3 px-1 pb-4 lg:gap-4 mt-2 mb-2 overflow-x-scroll overflow-y-hidden md:overflow-hidden">
-          {productsOnSale.slice(0, 5).map((product) => (
+        <ul className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-2 pb-4 lg:gap-4 my-2 justify-items-center">
+          {productData.map((product) => (
             <Product.Container key={product.id}>
               <Product.ContentImage src={imageExample} alt={product.name}>
                 <Product.ContentFavoriteIcon />
@@ -47,6 +39,13 @@ export function Promotions() {
             </Product.Container>
           ))}
         </ul>
+
+        <Link
+          className="w-52 mx-auto flex items-center justify-center gap-2 hover:opacity-80 bg-white shadow-default p-2"
+          href="/produtos"
+        >
+          Ver mais <FaArrowRight color={colors.text[900]} size="1rem" />
+        </Link>
       </div>
     </section>
   );
